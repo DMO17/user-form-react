@@ -4,6 +4,8 @@
   margin: 2rem auto;
   width: 90%;
   max-width: 40rem;
+  border: 3px solid rgb(12, 12, 12);
+  border-radius: 10px;
 }
 
 .flexContainer div {
@@ -15,7 +17,7 @@
 .flexContainer img {
   width: 200px;
   height: 200px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(147, 144, 144);
   margin: 0.5rem 1rem;
   padding: 0.5rem;
 }
@@ -26,7 +28,7 @@
 }
 
 .flexContainer li {
-  border: 1px solid #ccc;
+  border: 1px solid rgb(147, 144, 144);
   margin: 0.5rem 0;
   padding: 0.5rem;
 }
