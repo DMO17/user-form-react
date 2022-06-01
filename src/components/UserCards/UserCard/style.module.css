@@ -1,0 +1,38 @@
+.flexContainer {
+  display: flex;
+  background-color: rgb(224, 224, 224);
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.flexContainer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexContainer img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+}
+
+.flexContainer ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.flexContainer li {
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+@media only screen and (max-width: 550px) {
+  .flexContainer {
+    flex-direction: column;
+  }
+}
