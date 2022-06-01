@@ -1,3 +1,4 @@
+import { Button } from "../Button";
 import { Wrapper } from "../Wrapper";
 import classes from "./style.module.css";
 
@@ -12,7 +13,7 @@ export const AddUser = () => {
         <input id="fullName" type="text" />
         <label htmlFor="age">Age(Years)</label>
         <input id="age" type="number" />
-        <button type="submit">Add User</button>
+        <Button type="submit">Add User</Button>
       </form>
     </Wrapper>
   );
