@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../Button";
+import { ErrorModal } from "../ErrorModal";
 import { Wrapper } from "../Wrapper";
 import classes from "./style.module.css";
 
@@ -11,10 +12,11 @@ export const AddUser = ({ setUserData }) => {
   const [enteredAge, setEnteredAge] = useState("");
   const [enteredBio, setEnteredBio] = useState("N/A");
   const [enteredProfileImg, setEnteredProfileImg] = useState(defaultImg);
+  const [error, setError] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   const fullNameInputHandler = (event) =>
     setEnteredFullName(event.target.value);
-
   const ageInputHandler = (event) => setEnteredAge(event.target.value);
   const bioInputHandler = (event) => setEnteredBio(event.target.value);
   const profileImgInputHandler = (event) =>
@@ -24,12 +26,27 @@ export const AddUser = ({ setUserData }) => {
     event.preventDefault();
 
     if (enteredAge.trim().length === 0 || enteredFullName.trim().length === 0) {
+      setError({
+        title: "Invalid Input",
+        message: "Please enter a valid name and age (non-empty values)",
+      });
+
+      setShowModal(true);
+
       return;
     }
 
     if (+enteredAge < 1) {
+      setError({
+        title: "Invalid age",
+        message: "Please enter a valid age (> 0)",
+      });
+
+      setShowModal(true);
+
       return;
     }
+
     setUserData((prevState) => [
       {
         fullName: enteredFullName,
@@ -39,7 +56,7 @@ export const AddUser = ({ setUserData }) => {
       },
       ...prevState,
     ]);
-    console.log(enteredFullName, enteredAge);
+
     setEnteredAge("");
     setEnteredFullName("");
     setEnteredBio("");
@@ -47,40 +64,43 @@ export const AddUser = ({ setUserData }) => {
   };
 
   return (
-    <Wrapper className={classes.input}>
-      <form onSubmit={addUserHandler}>
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          id="fullName"
-          type="text"
-          value={enteredFullName}
-          onChange={fullNameInputHandler}
-        />
-        <label htmlFor="age">Age(Years)</label>
-        <input
-          id="age"
-          type="number"
-          value={enteredAge}
-          onChange={ageInputHandler}
-        />
+    <div>
+      {showModal && <ErrorModal {...error} setShowModal={setShowModal} />}
+      <Wrapper className={classes.input}>
+        <form onSubmit={addUserHandler}>
+          <label htmlFor="fullName">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            value={enteredFullName}
+            onChange={fullNameInputHandler}
+          />
+          <label htmlFor="age">Age(Years)</label>
+          <input
+            id="age"
+            type="number"
+            value={enteredAge}
+            onChange={ageInputHandler}
+          />
 
-        <label htmlFor="bio">Bio (optional)</label>
-        <input
-          id="bio"
-          type="text"
-          // value={enteredBio}
-          onChange={bioInputHandler}
-        />
+          <label htmlFor="bio">Bio (optional)</label>
+          <input
+            id="bio"
+            type="text"
+            // value={enteredBio}
+            onChange={bioInputHandler}
+          />
 
-        <label htmlFor="profileImg">Profile URL (optional)</label>
-        <input
-          id="profileImg"
-          type="text"
-          // value={enteredProfileImg}
-          onChange={profileImgInputHandler}
-        />
-        <Button type="submit">Add User</Button>
-      </form>
-    </Wrapper>
+          <label htmlFor="profileImg">Profile URL (optional)</label>
+          <input
+            id="profileImg"
+            type="text"
+            // value={enteredProfileImg}
+            onChange={profileImgInputHandler}
+          />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Wrapper>
+    </div>
   );
 };
