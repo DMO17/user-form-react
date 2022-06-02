@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/user-form-react/static/css/main.df3ad45e.css",
+    "main.js": "/user-form-react/static/js/main.4d20113d.js",
+    "index.html": "/user-form-react/index.html",
+    "main.df3ad45e.css.map": "/user-form-react/static/css/main.df3ad45e.css.map",
+    "main.4d20113d.js.map": "/user-form-react/static/js/main.4d20113d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df3ad45e.css",
+    "static/js/main.4d20113d.js"
+  ]
+}
